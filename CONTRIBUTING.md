@@ -11,13 +11,13 @@
 To install the project and run the tests, you need to clone it first:
 
 ```sh
-$ git clone git://github.com/psr7-sessions/storageless.git
+$ git clone git://github.com/psr7-sessions/storageless-zend-expressive-integration.git
 ```
 
 You will then need to run a composer installation:
 
 ```sh
-$ cd storageless
+$ cd storageless-zend-expressive-integration
 $ curl -s https://getcomposer.org/installer | php
 $ php composer.phar update
 ```
