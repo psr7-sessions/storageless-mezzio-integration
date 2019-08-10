@@ -18,7 +18,7 @@
 
 declare(strict_types=1);
 
-namespace PSR7Sessions\Storageless\Session\Zend;
+namespace PSR7Sessions\ZendExpressive\Storageless;
 
 use Lcobucci\Clock\Clock;
 use PSR7Sessions\Storageless\Session\SessionInterface;

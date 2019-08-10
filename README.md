@@ -21,7 +21,7 @@ composer require lcobucci/clock \
 ```php
 use Lcobucci\Clock\SystemClock;
 use PSR7Sessions\Storageless\Http\SessionMiddleware as PSR7SessionMiddleware;
-use PSR7Sessions\Storageless\Session\Zend\SessionPersistence;
+use PSR7Sessions\ZendExpressive\Storageless\SessionPersistence;
 use Zend\Expressive\Session\SessionMiddleware;
 
 $app = \Zend\Expressive\AppFactory::create();
@@ -37,7 +37,7 @@ $app->pipe(new SessionMiddleware(new SessionPersistence(new SystemClock())));
 ```php
 use Lcobucci\Clock\SystemClock;
 use PSR7Sessions\Storageless\Http\SessionMiddleware as PSR7SessionMiddleware;
-use PSR7Sessions\Storageless\Session\Zend\SessionPersistence;
+use PSR7Sessions\ZendExpressive\Storageless\SessionPersistence;
 use Zend\Expressive\Session\SessionMiddleware;
 
 $app = \Zend\Expressive\AppFactory::create();

@@ -40,12 +40,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PSR7Sessions\\Storageless\\": "src/Storageless"
+            "PSR7Sessions\\ZendExpressive\\": "src/ZendExpressive"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PSR7SessionsTest\\Storageless\\": "test/StoragelessTest"
+            "PSR7SessionsTest\\ZendExpressive\\": "test/ZendExpressive"
         }
     }
 }

@@ -18,7 +18,7 @@
 
 declare(strict_types=1);
 
-namespace PSR7SessionsTest\Storageless\Session\Zend;
+namespace PSR7SessionsTest\ZendExpressive\Storageless;
 
 use Lcobucci\Clock\Clock;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -27,14 +27,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use PSR7Sessions\Storageless\Http\SessionMiddleware;
 use PSR7Sessions\Storageless\Session\SessionInterface;
-use PSR7Sessions\Storageless\Session\Zend\SessionPersistence;
+use PSR7Sessions\ZendExpressive\Storageless\SessionPersistence;
 use UnexpectedValueException;
 use Zend\Expressive\Session\SessionInterface as ZendSessionInterface;
 use function sprintf;
 
-/**
- * @covers \PSR7Sessions\Storageless\Session\Zend\SessionPersistence
- */
+/** @covers \PSR7Sessions\ZendExpressive\Storageless\SessionPersistence */
 final class SessionPersistenceTest extends TestCase
 {
     public function testInitializeSessionFromRequestWithMissingPsr7SessionAttribute() : void

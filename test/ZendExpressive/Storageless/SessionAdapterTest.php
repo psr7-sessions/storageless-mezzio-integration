@@ -18,7 +18,7 @@
 
 declare(strict_types=1);
 
-namespace PSR7SessionsTest\Storageless\Session\Zend;
+namespace PSR7SessionsTest\ZendExpressive\Storageless;
 
 use DateTimeImmutable;
 use Lcobucci\Clock\Clock;
@@ -26,12 +26,10 @@ use Lcobucci\Clock\FrozenClock;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use PSR7Sessions\Storageless\Session\SessionInterface;
-use PSR7Sessions\Storageless\Session\Zend\SessionAdapter;
+use PSR7Sessions\ZendExpressive\Storageless\SessionAdapter;
 use stdClass;
 
-/**
- * @covers \PSR7Sessions\Storageless\Session\Zend\SessionAdapter
- */
+/** @covers \PSR7Sessions\ZendExpressive\Storageless\SessionAdapter */
 final class SessionAdapterTest extends TestCase
 {
     public function testToArray() : void
