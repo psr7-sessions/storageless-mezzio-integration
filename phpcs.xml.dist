@@ -2,7 +2,7 @@
 <ruleset
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd"
-    name="psr7-sessions/storageless"
+    name="psr7-sessions/storageless-zend-expressive-integration"
 >
     <arg name="basepath" value="."/>
     <arg name="extensions" value="php"/>

@@ -7,8 +7,8 @@
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
 >
-    <testsuite name="PSR7Session tests">
-        <directory>./test/StoragelessTest</directory>
+    <testsuite name="PSR7Session storageless-zend-expressive-integration tests">
+        <directory>./test</directory>
     </testsuite>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
