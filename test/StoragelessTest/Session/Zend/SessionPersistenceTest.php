@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace PSR7SessionsTest\Storageless\Session\Zend;
 
+use Lcobucci\Clock\Clock;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -53,7 +54,7 @@ final class SessionPersistenceTest extends TestCase
             ->with(SessionMiddleware::SESSION_ATTRIBUTE, null)
             ->willReturn(null);
 
-        $persistence = new SessionPersistence();
+        $persistence = new SessionPersistence($this->createMock(Clock::class));
         $persistence->initializeSessionFromRequest($request);
     }
 
@@ -71,7 +72,7 @@ final class SessionPersistenceTest extends TestCase
             ->with(SessionMiddleware::SESSION_ATTRIBUTE, null)
             ->willReturn($session);
 
-        $persistence = new SessionPersistence();
+        $persistence = new SessionPersistence($this->createMock(Clock::class));
         $persistence->initializeSessionFromRequest($request);
     }
 
@@ -85,7 +86,7 @@ final class SessionPersistenceTest extends TestCase
         $response = $this->getMockBuilder(ResponseInterface::class)->getMock();
         $response->expects(self::never())->method(self::anything());
 
-        $persistence = new SessionPersistence();
+        $persistence = new SessionPersistence($this->createMock(Clock::class));
 
         self::assertSame($response, $persistence->persistSession($zendSession, $response));
     }

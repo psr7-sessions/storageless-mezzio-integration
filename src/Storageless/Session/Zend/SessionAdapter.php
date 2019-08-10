@@ -21,7 +21,6 @@ declare(strict_types=1);
 namespace PSR7Sessions\Storageless\Session\Zend;
 
 use Lcobucci\Clock\Clock;
-use Lcobucci\Clock\SystemClock;
 use PSR7Sessions\Storageless\Session\SessionInterface;
 use Zend\Expressive\Session\SessionInterface as ZendSessionInterface;
 
@@ -35,10 +34,10 @@ final class SessionAdapter implements ZendSessionInterface
     /** @var Clock */
     private $clock;
 
-    public function __construct(SessionInterface $session, ?Clock $clock = null)
+    public function __construct(SessionInterface $session, Clock $clock)
     {
         $this->session = $session;
-        $this->clock   = $clock ?? new SystemClock();
+        $this->clock   = $clock;
     }
 
     /**

@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace PSR7Sessions\Storageless\Session\Zend;
 
+use Lcobucci\Clock\Clock;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use PSR7Sessions\Storageless\Http\SessionMiddleware;
@@ -31,6 +32,14 @@ use function sprintf;
 
 final class SessionPersistence implements ZendSessionPersistenceInterface
 {
+    /** @var Clock */
+    private $clock;
+
+    public function __construct(Clock $clock)
+    {
+        $this->clock = $clock;
+    }
+
     public function initializeSessionFromRequest(ServerRequestInterface $request) : ZendSessionInterface
     {
         /** @var SessionInterface|null $storagelessSession */
@@ -45,7 +54,7 @@ final class SessionPersistence implements ZendSessionPersistenceInterface
             );
         }
 
-        return new SessionAdapter($storagelessSession);
+        return new SessionAdapter($storagelessSession, $this->clock);
     }
 
     public function persistSession(ZendSessionInterface $session, ResponseInterface $response) : ResponseInterface

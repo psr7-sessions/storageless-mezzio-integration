@@ -21,6 +21,7 @@ declare(strict_types=1);
 namespace PSR7SessionsTest\Storageless\Session\Zend;
 
 use DateTimeImmutable;
+use Lcobucci\Clock\Clock;
 use Lcobucci\Clock\FrozenClock;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -42,7 +43,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('jsonSerialize')->with()->willReturn($object);
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
 
         self::assertSame(['key' => 'value'], $sessionAdapter->toArray());
     }
@@ -53,7 +54,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('get')->with('key', null)->willReturn('value');
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
 
         self::assertSame('value', $sessionAdapter->get('key'));
     }
@@ -64,7 +65,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('has')->with('key')->willReturn(true);
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
 
         self::assertTrue($sessionAdapter->has('key'));
     }
@@ -75,7 +76,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('set')->with('key', 'value');
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
         $sessionAdapter->set('key', 'value');
     }
 
@@ -85,7 +86,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('remove')->with('key');
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
         $sessionAdapter->unset('key');
     }
 
@@ -95,7 +96,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('clear')->with();
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
         $sessionAdapter->clear();
     }
 
@@ -105,7 +106,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('hasChanged')->with()->willReturn(true);
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
 
         self::assertTrue($sessionAdapter->hasChanged());
     }
@@ -128,7 +129,7 @@ final class SessionAdapterTest extends TestCase
         $session = $this->getMockBuilder(SessionInterface::class)->getMock();
         $session->expects(self::once())->method('has')->with('_regenerated')->willReturn(true);
 
-        $sessionAdapter = new SessionAdapter($session);
+        $sessionAdapter = new SessionAdapter($session, $this->createMock(Clock::class));
 
         self::assertTrue($sessionAdapter->isRegenerated());
     }
