@@ -8,7 +8,7 @@
     beStrictAboutTestsThatDoNotTestAnything="true"
     executionOrder="random"
 >
-    <testsuite name="PSR7Session storageless-zend-expressive-integration tests">
+    <testsuite name="PSR7Session storageless-mezzio-integration tests">
         <directory>./test</directory>
     </testsuite>
     <filter>

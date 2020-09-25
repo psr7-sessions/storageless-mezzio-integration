@@ -1,30 +1,30 @@
 # PSR-7 Storage-less HTTP Sessions - Zend Expressive Session Integration
 
-[![Build Status](https://travis-ci.org/psr7-sessions/storageless-zend-expressive-integration.svg)](https://travis-ci.org/psr7-sessions/storageless-zend-expressive-integration)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/psr7-sessions/storageless-zend-expressive-integration/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/psr7-sessions/storageless-zend-expressive-integration/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/psr7-sessions/storageless-zend-expressive-integration/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/psr7-sessions/storageless-zend-expressive-integration/?branch=master)
-[![Packagist](https://img.shields.io/packagist/v/psr7-sessions/storageless-zend-expressive-integration.svg)](https://packagist.org/packages/psr7-sessions/storageless-zend-expressive-integration)
-[![Packagist](https://img.shields.io/packagist/vpre/psr7-sessions/storageless-zend-expressive-integration.svg)](https://packagist.org/packages/psr7-sessions/storageless-zend-expressive-integration)
+[![Build Status](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration.svg)](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/psr7-sessions/storageless-mezzio-integration/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/psr7-sessions/storageless-mezzio-integration/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/psr7-sessions/storageless-mezzio-integration/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/psr7-sessions/storageless-mezzio-integration/?branch=master)
+[![Packagist](https://img.shields.io/packagist/v/psr7-sessions/storageless-mezzio-integration.svg)](https://packagist.org/packages/psr7-sessions/storageless-mezzio-integration)
+[![Packagist](https://img.shields.io/packagist/vpre/psr7-sessions/storageless-mezzio-integration.svg)](https://packagist.org/packages/psr7-sessions/storageless-mezzio-integration)
 
-This integration allows you to use storageless as an implementation for [zend-expressive-session][1]
+This integration allows you to use storageless as an implementation for [mezzio-session][1]
 
 #### Installation
 
 ```sh
 composer require lcobucci/clock \
                  psr7-sessions/storageless \
-                 psr7-sessions/storageless-zend-expressive-integration
+                 psr7-sessions/storageless-mezzio-integration
 ```
 
 #### Symmetric key
 
 ```php
 use Lcobucci\Clock\SystemClock;
+use Mezzio\Session\SessionMiddleware;
+use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
 use PSR7Sessions\Storageless\Http\SessionMiddleware as PSR7SessionMiddleware;
-use PSR7Sessions\ZendExpressive\Storageless\SessionPersistence;
-use Zend\Expressive\Session\SessionMiddleware;
 
-$app = \Zend\Expressive\AppFactory::create();
+$app = \Mezzio\AppFactory::create();
 $app->pipe(PSR7SessionMiddleware::fromSymmetricKeyDefaults(
     'OpcMuKmoxkhzW0Y1iESpjWwL/D3UBdDauJOe742BJ5Q=',
     1200
@@ -36,11 +36,11 @@ $app->pipe(new SessionMiddleware(new SessionPersistence(new SystemClock())));
 
 ```php
 use Lcobucci\Clock\SystemClock;
+use Mezzio\Session\SessionMiddleware;
+use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
 use PSR7Sessions\Storageless\Http\SessionMiddleware as PSR7SessionMiddleware;
-use PSR7Sessions\ZendExpressive\Storageless\SessionPersistence;
-use Zend\Expressive\Session\SessionMiddleware;
 
-$app = \Zend\Expressive\AppFactory::create();
+$app = \Mezzio\AppFactory::create();
 $app->pipe(PSR7SessionMiddleware::fromSymmetricKeyDefaults(
     file_get_contents('/path/to/private_key.pem'),
     file_get_contents('/path/to/public_key.pem'),
@@ -49,7 +49,7 @@ $app->pipe(PSR7SessionMiddleware::fromSymmetricKeyDefaults(
 $app->pipe(new SessionMiddleware(new SessionPersistence(new SystemClock())));
 ```
 
-[1]: https://github.com/zendframework/zend-expressive-session
+[1]: https://github.com/mezzio/mezzio-session
 
 ### Contributing
 

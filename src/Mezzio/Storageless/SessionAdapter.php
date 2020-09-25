@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace PSR7Sessions\ZendExpressive\Storageless;
+namespace PSR7Sessions\Mezzio\Storageless;
 
 use Lcobucci\Clock\Clock;
+use Mezzio\Session\SessionInterface as MezzioSessionInterface;
 use PSR7Sessions\Storageless\Session\SessionInterface;
-use Zend\Expressive\Session\SessionInterface as ZendSessionInterface;
 
-final class SessionAdapter implements ZendSessionInterface
+final class SessionAdapter implements MezzioSessionInterface
 {
     private const SESSION_REGENERATED_NAME = '_regenerated';
 
@@ -74,7 +74,7 @@ final class SessionAdapter implements ZendSessionInterface
         return $this->session->hasChanged();
     }
 
-    public function regenerate(): ZendSessionInterface
+    public function regenerate(): MezzioSessionInterface
     {
         $this->session->set(self::SESSION_REGENERATED_NAME, $this->timestamp());
 
