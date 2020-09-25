@@ -1,18 +1,23 @@
 language: php
 sudo: false
 
-php:
-  - 7.2
-  - 7.3
-  - nightly
+matrix:
+  include:
+    - php: 7.2
+    - php: 7.3
+    - php: 7.4
+    - php: nightly
+      env: composerargs="--ignore-platform-reqs"
+  allow_failures:
+    - php: nightly
 
 cache:
   directories:
     - $HOME/.composer/cache
 
 before_script:
-  - if [[ $TRAVIS_PHP_VERSION = '7.3' ]]; then PHPUNIT_FLAGS="--coverage-clover ./clover.xml"; else PHPUNIT_FLAGS=""; fi
-  - composer update --prefer-source --ignore-platform-reqs
+  - if [[ $TRAVIS_PHP_VERSION = '7.4' ]]; then PHPUNIT_FLAGS="--coverage-clover ./clover.xml"; else PHPUNIT_FLAGS=""; fi
+  - composer update --prefer-source $composerargs -n
 
 script:
   - ./vendor/bin/phpstan analyse
@@ -24,7 +29,3 @@ script:
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - if [ -f clover.xml ]; then php ocular.phar code-coverage:upload --format=php-clover ./clover.xml; fi
-
-matrix:
-  allow_failures:
-  - php: nightly
