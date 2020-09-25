@@ -32,7 +32,13 @@ final class SessionAdapter implements ZendSessionInterface
         return (array) $this->session->jsonSerialize();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * @param array<array-key, mixed>|object|scalar|null $default
+     *
+     * @return array<array-key, mixed>|object|scalar|null
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
+     */
     public function get(string $name, $default = null)
     {
         return $this->session->get($name, $default);
@@ -43,7 +49,11 @@ final class SessionAdapter implements ZendSessionInterface
         return $this->session->has($name);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * @param array<array-key, mixed>|object|scalar|null $value
+     *
+     * @psalm-suppress MoreSpecificImplementedParamType
+     */
     public function set(string $name, $value): void
     {
         $this->session->set($name, $value);
