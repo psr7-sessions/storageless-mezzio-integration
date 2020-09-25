@@ -18,7 +18,6 @@ script:
   - ./vendor/bin/phpstan analyse
   - ./vendor/bin/phpunit $PHPUNIT_FLAGS
   - ./vendor/bin/composer-require-checker
-  - php examples/index.php > /dev/null
   - if php -i |grep -qE xdebug; then ./vendor/bin/infection --log-verbosity=none --threads=4 --min-msi=100 --min-covered-msi=100; fi
   - ./vendor/bin/phpcs
 

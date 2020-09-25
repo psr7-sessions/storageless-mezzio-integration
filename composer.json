@@ -18,6 +18,11 @@
             "name":  "Luís Otávio Cobucci Oblonczyk",
             "email": "lcobucci@gmail.com",
             "role":  "Developer"
+        },
+        {
+            "name":  "Dominik Zogg",
+            "email": "dominik.zogg@gmail.com",
+            "role":  "Developer"
         }
     ],
     "require": {

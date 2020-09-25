@@ -25,7 +25,7 @@ final class SessionAdapter implements ZendSessionInterface
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function toArray() : array
     {
