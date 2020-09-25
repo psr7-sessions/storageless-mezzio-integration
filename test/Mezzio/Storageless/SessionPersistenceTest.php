@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace PSR7SessionsTest\ZendExpressive\Storageless;
+namespace PSR7SessionsTest\Mezzio\Storageless;
 
 use Lcobucci\Clock\Clock;
+use Mezzio\Session\SessionInterface as MezzioSessionInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
 use PSR7Sessions\Storageless\Http\SessionMiddleware;
 use PSR7Sessions\Storageless\Session\SessionInterface;
-use PSR7Sessions\ZendExpressive\Storageless\SessionPersistence;
 use UnexpectedValueException;
-use Zend\Expressive\Session\SessionInterface as ZendSessionInterface;
 
 use function assert;
 use function sprintf;
 
-/** @covers \PSR7Sessions\ZendExpressive\Storageless\SessionPersistence */
+/** @covers \PSR7Sessions\Mezzio\Storageless\SessionPersistence */
 final class SessionPersistenceTest extends TestCase
 {
     public function testInitializeSessionFromRequestWithMissingPsr7SessionAttribute(): void
@@ -61,9 +61,9 @@ final class SessionPersistenceTest extends TestCase
 
     public function testPersistSession(): void
     {
-        $zendSession = $this->getMockBuilder(ZendSessionInterface::class)->getMock();
-        assert($zendSession instanceof ZendSessionInterface);
-        $zendSession->expects(self::never())->method(self::anything());
+        $mezzioSession = $this->getMockBuilder(MezzioSessionInterface::class)->getMock();
+        assert($mezzioSession instanceof MezzioSessionInterface);
+        $mezzioSession->expects(self::never())->method(self::anything());
 
         $response = $this->getMockBuilder(ResponseInterface::class)->getMock();
         assert($response instanceof ResponseInterface);
@@ -71,6 +71,6 @@ final class SessionPersistenceTest extends TestCase
 
         $persistence = new SessionPersistence($this->createMock(Clock::class));
 
-        self::assertSame($response, $persistence->persistSession($zendSession, $response));
+        self::assertSame($response, $persistence->persistSession($mezzioSession, $response));
     }
 }

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace PSR7SessionsTest\ZendExpressive\Storageless;
+namespace PSR7SessionsTest\Mezzio\Storageless;
 
 use DateTimeImmutable;
 use Lcobucci\Clock\Clock;
 use Lcobucci\Clock\FrozenClock;
 use PHPUnit\Framework\TestCase;
+use PSR7Sessions\Mezzio\Storageless\SessionAdapter;
 use PSR7Sessions\Storageless\Session\SessionInterface;
-use PSR7Sessions\ZendExpressive\Storageless\SessionAdapter;
 use stdClass;
 
 use function assert;
 
-/** @covers \PSR7Sessions\ZendExpressive\Storageless\SessionAdapter */
+/** @covers \PSR7Sessions\Mezzio\Storageless\SessionAdapter */
 final class SessionAdapterTest extends TestCase
 {
     public function testToArray(): void
