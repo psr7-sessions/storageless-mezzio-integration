@@ -20,7 +20,7 @@ before_script:
   - composer update --prefer-source $composerargs -n
 
 script:
-  - ./vendor/bin/phpstan analyse
+  - ./vendor/bin/psalm
   - ./vendor/bin/phpunit $PHPUNIT_FLAGS
   - ./vendor/bin/composer-require-checker
   - if php -i |grep -qE xdebug; then ./vendor/bin/infection --log-verbosity=none --threads=4 --min-msi=100 --min-covered-msi=100; fi
