@@ -12,6 +12,8 @@ use PSR7Sessions\Storageless\Session\SessionInterface;
 use UnexpectedValueException;
 use Zend\Expressive\Session\SessionInterface as ZendSessionInterface;
 use Zend\Expressive\Session\SessionPersistenceInterface as ZendSessionPersistenceInterface;
+
+use function assert;
 use function sprintf;
 
 final class SessionPersistence implements ZendSessionPersistenceInterface
@@ -24,10 +26,10 @@ final class SessionPersistence implements ZendSessionPersistenceInterface
         $this->clock = $clock;
     }
 
-    public function initializeSessionFromRequest(ServerRequestInterface $request) : ZendSessionInterface
+    public function initializeSessionFromRequest(ServerRequestInterface $request): ZendSessionInterface
     {
-        /** @var SessionInterface|null $storagelessSession */
         $storagelessSession = $request->getAttribute(SessionMiddleware::SESSION_ATTRIBUTE);
+        assert($storagelessSession instanceof SessionInterface || $storagelessSession === null);
         if (! $storagelessSession instanceof SessionInterface) {
             throw new UnexpectedValueException(
                 sprintf(
@@ -41,7 +43,7 @@ final class SessionPersistence implements ZendSessionPersistenceInterface
         return new SessionAdapter($storagelessSession, $this->clock);
     }
 
-    public function persistSession(ZendSessionInterface $session, ResponseInterface $response) : ResponseInterface
+    public function persistSession(ZendSessionInterface $session, ResponseInterface $response): ResponseInterface
     {
         return $response;
     }

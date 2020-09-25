@@ -27,7 +27,7 @@ final class SessionAdapter implements ZendSessionInterface
     /**
      * @return array<mixed>
      */
-    public function toArray() : array
+    public function toArray(): array
     {
         return (array) $this->session->jsonSerialize();
     }
@@ -38,45 +38,45 @@ final class SessionAdapter implements ZendSessionInterface
         return $this->session->get($name, $default);
     }
 
-    public function has(string $name) : bool
+    public function has(string $name): bool
     {
         return $this->session->has($name);
     }
 
     /** {@inheritDoc} */
-    public function set(string $name, $value) : void
+    public function set(string $name, $value): void
     {
         $this->session->set($name, $value);
     }
 
-    public function unset(string $name) : void
+    public function unset(string $name): void
     {
         $this->session->remove($name);
     }
 
-    public function clear() : void
+    public function clear(): void
     {
         $this->session->clear();
     }
 
-    public function hasChanged() : bool
+    public function hasChanged(): bool
     {
         return $this->session->hasChanged();
     }
 
-    public function regenerate() : ZendSessionInterface
+    public function regenerate(): ZendSessionInterface
     {
         $this->session->set(self::SESSION_REGENERATED_NAME, $this->timestamp());
 
         return $this;
     }
 
-    public function isRegenerated() : bool
+    public function isRegenerated(): bool
     {
         return $this->session->has(self::SESSION_REGENERATED_NAME);
     }
 
-    private function timestamp() : int
+    private function timestamp(): int
     {
         return $this->clock->now()->getTimestamp();
     }
