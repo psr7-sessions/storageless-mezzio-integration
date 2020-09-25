@@ -6,6 +6,7 @@
     backupGlobals="false"
     beStrictAboutOutputDuringTests="true"
     beStrictAboutTestsThatDoNotTestAnything="true"
+    executionOrder="random"
 >
     <testsuite name="PSR7Session storageless-zend-expressive-integration tests">
         <directory>./test</directory>
