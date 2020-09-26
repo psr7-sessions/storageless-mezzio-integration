@@ -1,4 +1,4 @@
-# PSR-7 Storage-less HTTP Sessions - Zend Expressive Session Integration
+# PSR-7 Storage-less HTTP Sessions - Mezzio Session Integration
 
 [![Build Status](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration.svg)](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/psr7-sessions/storageless-mezzio-integration/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/psr7-sessions/storageless-mezzio-integration/?branch=master)
