@@ -18,8 +18,7 @@ use function sprintf;
 
 final class SessionPersistence implements MezzioSessionPersistenceInterface
 {
-    /** @var Clock */
-    private $clock;
+    private Clock $clock;
 
     public function __construct(Clock $clock)
     {
