@@ -12,11 +12,9 @@ final class SessionAdapter implements MezzioSessionInterface
 {
     private const SESSION_REGENERATED_NAME = '_regenerated';
 
-    /** @var SessionInterface */
-    private $session;
+    private SessionInterface $session;
 
-    /** @var Clock */
-    private $clock;
+    private Clock $clock;
 
     public function __construct(SessionInterface $session, Clock $clock)
     {

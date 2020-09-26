@@ -18,6 +18,5 @@
 
     <rule ref="Doctrine">
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/> <!-- remove once min php version is 7.4 -->
     </rule>
 </ruleset>
