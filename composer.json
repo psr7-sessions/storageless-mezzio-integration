@@ -40,7 +40,7 @@
         "doctrine/coding-standard": "^8.1",
         "maglnet/composer-require-checker": "^2.1",
         "vimeo/psalm": "^3.18.2",
-        "psalm/plugin-phpunit": "^0.12.1"
+        "psalm/plugin-phpunit": "^0.12.2"
     },
     "config": {
         "sort-packages": true
