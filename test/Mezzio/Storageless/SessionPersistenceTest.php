@@ -14,7 +14,6 @@ use PSR7Sessions\Storageless\Http\SessionMiddleware;
 use PSR7Sessions\Storageless\Session\SessionInterface;
 use UnexpectedValueException;
 
-use function assert;
 use function sprintf;
 
 /** @covers \PSR7Sessions\Mezzio\Storageless\SessionPersistence */
@@ -29,8 +28,7 @@ final class SessionPersistenceTest extends TestCase
             SessionPersistence::class
         ));
 
-        $request = $this->getMockBuilder(ServerRequestInterface::class)->getMock();
-        assert($request instanceof ServerRequestInterface);
+        $request = $this->createMock(ServerRequestInterface::class);
         $request
             ->expects(self::once())
             ->method('getAttribute')
@@ -43,12 +41,10 @@ final class SessionPersistenceTest extends TestCase
 
     public function testInitializeSessionFromRequestWithPsr7SessionAttribute(): void
     {
-        $session = $this->getMockBuilder(SessionInterface::class)->getMock();
-        assert($session instanceof SessionInterface);
+        $session = $this->createMock(SessionInterface::class);
         $session->expects(self::never())->method(self::anything());
 
-        $request = $this->getMockBuilder(ServerRequestInterface::class)->getMock();
-        assert($request instanceof ServerRequestInterface);
+        $request = $this->createMock(ServerRequestInterface::class);
         $request
             ->expects(self::once())
             ->method('getAttribute')
@@ -61,12 +57,10 @@ final class SessionPersistenceTest extends TestCase
 
     public function testPersistSession(): void
     {
-        $mezzioSession = $this->getMockBuilder(MezzioSessionInterface::class)->getMock();
-        assert($mezzioSession instanceof MezzioSessionInterface);
+        $mezzioSession = $this->createMock(MezzioSessionInterface::class);
         $mezzioSession->expects(self::never())->method(self::anything());
 
-        $response = $this->getMockBuilder(ResponseInterface::class)->getMock();
-        assert($response instanceof ResponseInterface);
+        $response = $this->createMock(ResponseInterface::class);
         $response->expects(self::never())->method(self::anything());
 
         $persistence = new SessionPersistence($this->createMock(Clock::class));
