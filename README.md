@@ -1,6 +1,5 @@
 # PSR-7 Storage-less HTTP Sessions - Mezzio Session Integration
 
-[![Build Status](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration.svg)](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration)
 [![Infection MSI](https://badge.stryker-mutator.io/github.com/psr7-sessions/storageless-mezzio-integration/master)](https://travis-ci.org/psr7-sessions/storageless-mezzio-integration)
 [![Packagist](https://img.shields.io/packagist/v/psr7-sessions/storageless-mezzio-integration.svg)](https://packagist.org/packages/psr7-sessions/storageless-mezzio-integration)
 [![Packagist](https://img.shields.io/packagist/vpre/psr7-sessions/storageless-mezzio-integration.svg)](https://packagist.org/packages/psr7-sessions/storageless-mezzio-integration)
