@@ -3,3 +3,4 @@ composer.phar
 clover.xml
 infectionlog.txt
 .phpcs-cache
+.phpunit.result.cache
