@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace PSR7SessionsTest\Mezzio\Storageless;
 
 use Lcobucci\Clock\Clock;
-use Mezzio\Session\SessionInterface as MezzioSessionInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
+use PSR7Sessions\Mezzio\Storageless\SessionThatIsIdentifierAware;
 use PSR7Sessions\Storageless\Http\SessionMiddleware;
 use PSR7Sessions\Storageless\Session\SessionInterface;
 use UnexpectedValueException;
@@ -57,7 +57,7 @@ final class SessionPersistenceTest extends TestCase
 
     public function testPersistSession(): void
     {
-        $mezzioSession = $this->createMock(MezzioSessionInterface::class);
+        $mezzioSession = $this->createMock(SessionThatIsIdentifierAware::class);
         $mezzioSession->expects(self::never())->method(self::anything());
 
         $response = $this->createMock(ResponseInterface::class);
