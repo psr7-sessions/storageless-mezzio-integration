@@ -9,9 +9,9 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
-use PSR7Sessions\Mezzio\Storageless\SessionThatIsIdentifierAware;
 use PSR7Sessions\Storageless\Http\SessionMiddleware;
 use PSR7Sessions\Storageless\Session\SessionInterface;
+use PSR7SessionsTest\Mezzio\Storageless\SessionThatIsIdentifierAware;
 use UnexpectedValueException;
 
 use function sprintf;
