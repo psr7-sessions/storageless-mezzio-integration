@@ -7,4 +7,6 @@ namespace PSR7SessionsTest\Mezzio\Storageless;
 use Mezzio\Session\SessionIdentifierAwareInterface;
 use Mezzio\Session\SessionInterface;
 
-interface SessionThatIsIdentifierAware extends SessionInterface, SessionIdentifierAwareInterface {}
+interface SessionThatIsIdentifierAware extends SessionInterface, SessionIdentifierAwareInterface
+{
+}
