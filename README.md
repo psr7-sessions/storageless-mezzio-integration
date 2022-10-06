@@ -18,13 +18,14 @@ composer require lcobucci/clock \
 
 ```php
 use Lcobucci\Clock\SystemClock;
+use Lcobucci\JWT\Signer\Key\InMemory;
 use Mezzio\Session\SessionMiddleware;
 use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
 use PSR7Sessions\Storageless\Http\SessionMiddleware as PSR7SessionMiddleware;
 
 $app = \Mezzio\AppFactory::create();
 $app->pipe(PSR7SessionMiddleware::fromSymmetricKeyDefaults(
-    'OpcMuKmoxkhzW0Y1iESpjWwL/D3UBdDauJOe742BJ5Q=',
+    InMemory::plainText('OpcMuKmoxkhzW0Y1iESpjWwL/D3UBdDauJOe742BJ5Q='),
     1200
 ));
 $app->pipe(new SessionMiddleware(new SessionPersistence(new SystemClock())));
@@ -34,14 +35,15 @@ $app->pipe(new SessionMiddleware(new SessionPersistence(new SystemClock())));
 
 ```php
 use Lcobucci\Clock\SystemClock;
+use Lcobucci\JWT\Signer\Key\InMemory;
 use Mezzio\Session\SessionMiddleware;
 use PSR7Sessions\Mezzio\Storageless\SessionPersistence;
 use PSR7Sessions\Storageless\Http\SessionMiddleware as PSR7SessionMiddleware;
 
 $app = \Mezzio\AppFactory::create();
 $app->pipe(PSR7SessionMiddleware::fromSymmetricKeyDefaults(
-    file_get_contents('/path/to/private_key.pem'),
-    file_get_contents('/path/to/public_key.pem'),
+    InMemory::file('/path/to/private_key.pem'),
+    InMemory::file('/path/to/public_key.pem'),
     1200
 ));
 $app->pipe(new SessionMiddleware(new SessionPersistence(new SystemClock())));
