@@ -43,13 +43,16 @@
         "psalm/plugin-phpunit": "^0.16.1"
     },
     "config": {
-        "sort-packages": true,
         "allow-plugins": {
             "infection/extension-installer": true,
             "laminas/laminas-dependency-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "composer/package-versions-deprecated": true
-        }
+        },
+        "platform": {
+            "php": "7.4.99"
+        },
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
